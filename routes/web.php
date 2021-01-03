@@ -23,9 +23,11 @@ Route::get('/contact', function() {
     return view('contact');
 });
 
+Route::get('/bookbase', function() {
+    return view('bookbase');
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/number', [\App\Http\Controllers\NumberController::class, 'number'])->name('number');
 Auth::routes();
-
-

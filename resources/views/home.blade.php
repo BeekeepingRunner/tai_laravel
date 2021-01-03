@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body-interface d-flex flex-wrap">
                             <a class="btn btn-link" href="#">
-                                Dodaj książkę
+                                Dodaj książkę do bazy
                             </a>
                             <a class="btn btn-link" href="#">
                                 Moja kolekcja

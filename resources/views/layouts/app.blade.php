@@ -32,6 +32,9 @@
                             <a class="nav-link" href="{{ url('/') }}">Strona główna</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/bookbase') }}">Książki</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ url('/aboutus') }}">O mnie</a>
                         </li>
                         <li class="nav-item">
@@ -61,10 +64,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/home') }}">
+                                        {{ __('Panel użytkownika') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Wyloguj się') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
