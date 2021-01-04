@@ -23,11 +23,14 @@ Route::get('/contact', function() {
     return view('contact');
 });
 
-Route::get('/bookbase', function() {
-    return view('bookbase');
-});
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/bookbase', [\App\Http\Controllers\BooksController::class, 'index'])->name('bookbase');
+Route::get('/add-book-to-base', [\App\Http\Controllers\BooksController::class, 'create'])->name('addBookToBase');
+Route::post('/add-book-to-base', [\App\Http\Controllers\BooksController::class, 'store'])->name('storeBookInBase');
+Route::get('/delete-book-from-base/{id}', [\App\Http\Controllers\BooksController::class, 'destroy'])->name('deleteBookFromBase');
+Route::get('/edit-book/{id}', [\App\Http\Controllers\BooksController::class, 'edit'])->name('editBook');
+Route::put('{id}', [\App\Http\Controllers\BooksController::class, 'update'])->name('updateBook');
 
 Route::get('/number', [\App\Http\Controllers\NumberController::class, 'number'])->name('number');
 Auth::routes();

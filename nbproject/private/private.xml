@@ -3,18 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/auth/login.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2021_01_03_110212_create_book_images_table.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/welcome.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2021_01_03_115730_create_books_table.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/User.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/home.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/layouts/app.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/bookbase.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/public/css/customStyles.css</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/bookEditForm.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/addbooktobase.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/auth/login.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/HomeController.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/BooksController.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/User.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/layouts/app.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/BookImage.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Requests/BookRequest.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2014_10_12_000000_create_users_table.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/Book.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/css/app.css</file>
         </group>
     </open-files>
 </project-private>

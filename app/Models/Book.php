@@ -9,6 +9,12 @@ class Book extends Model
 {
     use HasFactory;
     
+    // One Book was put in a base by one User
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     /**
      * 
      * Get the image associated with the book

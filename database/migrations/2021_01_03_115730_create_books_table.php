@@ -15,9 +15,11 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('image_id')->nullable()->constrained('book_images');
             $table->string('title');
             $table->string('author');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
         /*

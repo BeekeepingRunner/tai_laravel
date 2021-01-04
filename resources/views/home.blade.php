@@ -26,16 +26,17 @@
                             </div>
                         </div>
                         <div class="card-body-interface d-flex flex-wrap">
-                            <a class="btn btn-link" href="#">
+                            <a class="btn btn-link" href="{{ route('addBookToBase') }}">
                                 Dodaj książkę do bazy
                             </a>
                             <a class="btn btn-link" href="#">
-                                Moja kolekcja
+                                Książki dodane do bazy
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
+    </div> 
 </div>
 @endsection
