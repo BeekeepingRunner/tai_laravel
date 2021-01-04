@@ -17,7 +17,9 @@
                         <th>Tytuł</th>
                         <th>Autor</th>
                         <th>Opis</th>
+                        @auth
                         <th>Akcja</th>
+                        @endauth
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +30,7 @@
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->description }}</td>
                             <td>
+                            @auth
                                 @if($book->user_id == \Auth::user()->id)
                                     <a href="{{ route('deleteBookFromBase', $book) }}"
                                        class="btn btn-danger btn-x"
@@ -39,6 +42,7 @@
                                        title="Edytuj"> Edytuj
                                     </a>
                                 @endif
+                            @endauth
                             </td>
                         </tr>
                     @endforeach

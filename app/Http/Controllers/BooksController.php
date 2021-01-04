@@ -122,7 +122,7 @@ class BooksController extends Controller
             return back()->with(['success' => false, 'message_type' => 'danger',
                 'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
         }
-        if ($comment->delete())
+        if ($book->delete())
         {
             return redirect()->route('bookbase')->with(['success' => true,
                 'message_type' => 'success',
