@@ -31,6 +31,7 @@ Route::post('/add-book-to-base', [\App\Http\Controllers\BooksController::class, 
 Route::get('/delete-book-from-base/{id}', [\App\Http\Controllers\BooksController::class, 'destroy'])->name('deleteBookFromBase');
 Route::get('/edit-book/{id}', [\App\Http\Controllers\BooksController::class, 'edit'])->name('editBook');
 Route::put('{id}', [\App\Http\Controllers\BooksController::class, 'update'])->name('updateBook');
+Route::get('/books-added-by-user', [\App\Http\Controllers\BooksController::class, 'showUserBooks'])->name('booksAddedByUser');
 
 Route::get('/number', [\App\Http\Controllers\NumberController::class, 'number'])->name('number');
 Auth::routes();

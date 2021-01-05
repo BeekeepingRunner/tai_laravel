@@ -29,7 +29,7 @@
                             <a class="btn btn-link" href="{{ route('addBookToBase') }}">
                                 Dodaj książkę do bazy
                             </a>
-                            <a class="btn btn-link" href="#">
+                            <a class="btn btn-link" href="{{ route('booksAddedByUser') }}">
                                 Książki dodane do bazy
                             </a>
                         </div>

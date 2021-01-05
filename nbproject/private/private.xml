@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/userBookBase.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2021_01_03_110212_create_book_images_table.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/welcome.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2021_01_03_115730_create_books_table.php</file>
@@ -19,8 +20,8 @@
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/layouts/app.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/BookImage.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Requests/BookRequest.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/database/factories/UserFactory.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2014_10_12_000000_create_users_table.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/Book.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/css/app.css</file>
         </group>
     </open-files>

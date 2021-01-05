@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
+use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
@@ -62,6 +63,18 @@ class BooksController extends Controller
     {
         //
     }
+    
+    public function showUserBooks()
+    {
+        // If a user is not logged in
+        if (!\Auth::check()) {
+            return view('welcome');
+        }
+        
+        $books = Book::where('user_id', \Auth::user()->id)->orderBy('title', 'asc')->get();
+        
+        return view('userBookBase', compact('books'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -71,6 +84,11 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
+        // If a user is not logged in
+        if (!\Auth::check()) {
+            return redirect()->route('bookbase');
+        }
+        
         $book = Book::find($id);
         // Check if current user added the book to the base
         if (\Auth::user()->id != $book->user_id)
@@ -115,6 +133,11 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
+        // If a user is not logged in
+        if (!\Auth::check()) {
+            return redirect()->route('bookbase');
+        }
+        
         $book = Book::find($id);
         // Check if current user added the book to the base
         if (\Auth::user()->id != $book->user_id)
