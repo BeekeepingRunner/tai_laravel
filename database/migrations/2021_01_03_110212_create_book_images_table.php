@@ -15,7 +15,7 @@ class CreateBookImagesTable extends Migration
     {
         Schema::create('book_images', function (Blueprint $table) {
             $table->id();
-            $table->string('src')->default('public/images/samples/bookIcon.jpg');
+            $table->string('src');
             $table->string('mime_type')->nullable();
             $table->string('title')->nullable();
             $table->string('alt')->nullable();

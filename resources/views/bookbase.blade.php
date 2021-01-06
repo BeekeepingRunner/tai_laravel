@@ -32,14 +32,14 @@
                             <td>
                             @auth
                                 @if($book->user_id == \Auth::user()->id)
+                                    <a href="{{ route('editBook', $book) }}"
+                                       class="btn btn-success btn-xs"
+                                       title="Edytuj">Edytuj
+                                    </a>
                                     <a href="{{ route('deleteBookFromBase', $book) }}"
                                        class="btn btn-danger btn-x"
                                        onclick="return confirm('Jesteś pewien?')"
-                                       title="Skasuj"><i class="fa fa-trash-o"></i> Usuń
-                                    </a>
-                                    <a href="{{ route('editBook', $book) }}"
-                                       class="btn btn-success btn-xs"
-                                       title="Edytuj"> Edytuj
+                                       title="Skasuj"><i class="fa fa-trash-o"></i>Usuń
                                     </a>
                                 @endif
                             @endauth

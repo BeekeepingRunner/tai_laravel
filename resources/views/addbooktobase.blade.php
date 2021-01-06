@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scripts')
+
+@endsection
+
 @section('currentNavPage', 'Rejestracja')
 
 @section('content')
@@ -12,8 +16,9 @@
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                        $foreach ($errors->all() as $error)
+                        @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
+                        @endforeach
                     </ul>
                 </div>
                 @endif
@@ -39,10 +44,10 @@
                         <div class="form-group row{{ $errors->has('message')?'has-error':'' }}" id="roles-box">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Opis') }}</label>
                             <div class="col-md-6">
-                                <input id="description" type="text" name="description" required>
+                                <textarea id="description" name="description" rows="6", cols="35"></textarea>
                             </div>
                         </div>
-
+                        
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
