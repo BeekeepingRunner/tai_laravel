@@ -25,11 +25,18 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-body-interface d-flex flex-wrap">
-                            <a class="btn btn-link" href="{{ route('addBookToBase') }}">
+                        <div class="card-body-interface flex-wrap">
+                            <a class="btn btn-success" href="{{ route('booksAddedByUser') }}">
+                                Książki przeczytane
+                            </a>
+                            <a class="btn btn-success" href="{{ route('booksAddedByUser') }}">
+                                Książki do przeczytania
+                            </a>
+                            <br /><br />
+                            <a class="btn btn-primary" href="{{ route('addBookToBase') }}">
                                 Dodaj książkę do bazy
                             </a>
-                            <a class="btn btn-link" href="{{ route('booksAddedByUser') }}">
+                            <a class="btn btn-primary" href="{{ route('booksAddedByUser') }}">
                                 Książki dodane do bazy
                             </a>
                         </div>

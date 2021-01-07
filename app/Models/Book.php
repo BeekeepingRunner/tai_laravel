@@ -10,7 +10,7 @@ class Book extends Model
     use HasFactory;
     
     // One Book was put in a base by one User
-    public function user()
+    public function userOwner()
     {
         return $this->belongsTo(User::class);
     }

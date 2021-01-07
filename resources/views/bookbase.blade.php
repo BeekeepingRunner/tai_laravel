@@ -29,21 +29,18 @@
                             <td>{{ $book->title }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->description }}</td>
-                            <td>
                             @auth
-                                @if($book->user_id == \Auth::user()->id)
-                                    <a href="{{ route('editBook', $book) }}"
-                                       class="btn btn-success btn-xs"
-                                       title="Edytuj">Edytuj
-                                    </a>
-                                    <a href="{{ route('deleteBookFromBase', $book) }}"
-                                       class="btn btn-danger btn-x"
-                                       onclick="return confirm('Jesteś pewien?')"
-                                       title="Skasuj"><i class="fa fa-trash-o"></i>Usuń
-                                    </a>
-                                @endif
-                            @endauth
+                            <td>
+                                <a href="{{ route('addToRead', $book) }}"
+                                   class="btn btn-success btn-xs"
+                                   title="toReadButton"> Dodaj do przeczytania
+                                </a>
+                                <a href="{{ route('addAsRead', $book) }}"
+                                    class="btn btn-primary btn-xs"
+                                   title="AsReadButton"> Dodaj do przeczytanych
+                                </a>
                             </td>
+                            @endauth
                         </tr>
                     @endforeach
                  </tbody>
