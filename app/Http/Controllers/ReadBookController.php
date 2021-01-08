@@ -13,14 +13,6 @@ class ReadBookController extends Controller
      */
     public function index()
     {
-         // If a user is not logged in
-        if (!\Auth::check()) {
-            return view('welcome');
-        }
-        
-        $books = ReadBook::where('user_id', \Auth::user()->id)->orderBy('title', 'asc')->get();
-        
-        return view('userReadBooks', compact('books'));
     }
 
     /**

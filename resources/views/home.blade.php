@@ -27,17 +27,17 @@
                         </div>
                         <div class="card-body-interface flex-wrap">
                             <a class="btn btn-success" href="{{ route('booksAddedByUser') }}">
-                                Książki przeczytane
+                                Przeczytane książki
                             </a>
-                            <a class="btn btn-success" href="{{ route('booksAddedByUser') }}">
-                                Książki do przeczytania
+                            <a class="btn btn-success" href="{{ route('userToReadBooks') }}">
+                                Do przeczytania
                             </a>
                             <br /><br />
                             <a class="btn btn-primary" href="{{ route('addBookToBase') }}">
-                                Dodaj książkę do bazy
+                                Dodaj książkę
                             </a>
-                            <a class="btn btn-primary" href="{{ route('booksAddedByUser') }}">
-                                Książki dodane do bazy
+                            <a class="btn btn-link" href="{{ route('booksAddedByUser') }}">
+                                Dodane książki
                             </a>
                         </div>
                     </div>

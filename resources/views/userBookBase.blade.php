@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('currentNavPage', 'Książki')
+@section('currentNavPage', 'Dodane książki')
 
 @section('content')
 <div class="container">

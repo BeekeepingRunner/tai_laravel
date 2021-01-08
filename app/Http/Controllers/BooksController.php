@@ -52,7 +52,7 @@ class BooksController extends Controller
             $book->description = $request->description;
         }
         if ($book->save()) {
-            return redirect()->route('bookbase');
+            return redirect()->route('booksAddedByUser');
         }
         return "Wystąpił błąd";
     }
@@ -151,7 +151,7 @@ class BooksController extends Controller
         }
         if ($book->delete())
         {
-            return redirect()->route('bookbase')->with(['success' => true,
+            return redirect()->route('booksAddedByUser')->with(['success' => true,
                 'message_type' => 'success',
                 'message' => 'Pomyślnie skasowano książkę z bazy.']);
         }

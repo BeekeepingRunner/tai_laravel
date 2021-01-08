@@ -36,5 +36,7 @@ Route::get('/books-added-by-user', [\App\Http\Controllers\BooksController::class
 Route::get('/add-to-read/{id}', [\App\Http\Controllers\ToReadBookController::class, 'store'])->name('addToRead');
 Route::get('/add-as-read/{id}', [App\Http\Controllers\ReadBookController::class, 'store'])->name('addAsRead');
 
+Route::get('/user-to-read', [App\Http\Controllers\ToReadBookController::class, 'index'])->name('userToReadBooks');
+
 Route::get('/number', [\App\Http\Controllers\NumberController::class, 'number'])->name('number');
 Auth::routes();

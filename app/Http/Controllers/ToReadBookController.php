@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ToReadBook;
+use App\Models\Book;
 
 class ToReadBookController extends Controller
 {
@@ -16,10 +17,15 @@ class ToReadBookController extends Controller
         if (!\Auth::check()) {
             return view('welcome');
         }
-        
-        $books = ReadBook::where('user_id', \Auth::user()->id)->orderBy('title', 'asc')->get();
-        
-        return view('userReadBooks', compact('books'));
+        // Save all id's of user's books to read
+        $booksRefs = ToReadBook::where('user_id', \Auth::user()->id)->get();
+        $bookIdArr = array();
+        foreach ($booksRefs as $ref) {
+            array_push($bookIdArr, $ref->book_id);
+        }
+        // return books with proper id's
+        $booksToRead = Book::whereIn('id', $bookIdArr)->get();
+        return view('userToReadBooks', compact('booksToRead'));
     }
 
     /**
@@ -34,7 +40,7 @@ class ToReadBookController extends Controller
         
         // Check if user already has this book in his collection
         $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
-        if (ToReadBook::where($matchThese)->get() != null)
+        if (ToReadBook::where($matchThese)->get()->isEmpty())
         {
             $toReadBook = new ToReadBook();
             $toReadBook->user_id = \Auth::user()->id;
@@ -47,9 +53,7 @@ class ToReadBookController extends Controller
         }
         else
         {
-            return redirect()->route('bookbase')
-                    ->with(['success' => false, 'message_type' => 'danger',
-                    'message' => 'Posiadasz już tę książkę w swojej kolekcji.']);
+            return redirect()->route('bookbase');
         }
 
         return view('bookEditForm', compact('book'));
