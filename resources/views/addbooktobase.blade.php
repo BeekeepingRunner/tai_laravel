@@ -4,7 +4,7 @@
 
 @endsection
 
-@section('currentNavPage', 'Rejestracja')
+@section('currentNavPage', 'Dodaj książkę')
 
 @section('content')
 <div class="container">
@@ -44,7 +44,7 @@
                         <div class="form-group row{{ $errors->has('message')?'has-error':'' }}" id="roles-box">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Opis') }}</label>
                             <div class="col-md-6">
-                                <textarea id="description" name="description" rows="6", cols="35"></textarea>
+                                <textarea id="description" name="description" rows="6", cols="24"></textarea>
                             </div>
                         </div>
                         

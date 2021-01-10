@@ -50,13 +50,10 @@ class ToReadBookController extends Controller
             } else {
                 return "Wystąpił błąd";
             }
-        }
-        else
-        {
+        } else {
+            // TODO: komunikat o posiadaniu książki w kolekcji
             return redirect()->route('bookbase');
         }
-
-        return view('bookEditForm', compact('book'));
     }
 
     /**
@@ -101,6 +98,23 @@ class ToReadBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // If a user is not logged in
+        if (!\Auth::check()) {
+            return redirect()->route('bookbase');
+        }
+        
+        $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
+        if (!ToReadBook::where($matchThese)->delete())
+        {
+            return redirect()->route('userToReadBooks')->with(['success' => false,
+                'message_type' => 'danger',
+                'message' => 'Wystąpił błąd podczas usuwania książki z kolekcji. Spróbuj później']);
+        }
+        else
+        {
+            return redirect()->route('userToReadBooks')->with(['success' => true,
+                'message_type' => 'success',
+                'message' => 'Pomyślnie skasowano książkę z kolekcji.']);
+        }
     }
 }

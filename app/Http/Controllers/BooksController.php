@@ -155,6 +155,7 @@ class BooksController extends Controller
                 'message_type' => 'success',
                 'message' => 'Pomyślnie skasowano książkę z bazy.']);
         }
+        
         return back()->with(['success' => false, 'message_type' => 'danger',
                 'message' => 'Wystąpił błąd podczas kasowania książki z bazy. Spróbuj później.']);
     }

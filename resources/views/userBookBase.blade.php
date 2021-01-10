@@ -26,7 +26,7 @@
                     @foreach($books as $book)
                         <tr>
                             <td>{{ $book->id }}</td>
-                            <td>{{ $book->title }}</td>
+                            <td><b>{{ $book->title }}</b></td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->description }}</td>
                             <td>

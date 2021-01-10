@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ReadBook;
 
 class ReadBookController extends Controller
 {
@@ -16,24 +17,30 @@ class ReadBookController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        // If a user is not logged in
+        if (!\Auth::check()) {
+            return redirect()->route('bookbase');
+        }
+        
+        $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
+        if (ReadBook::where($matchThese)->get()->isEmpty())
+        {
+            $readBook = new ReadBook();
+            $readBook->user_id = \Auth::user()->id;
+            $readBook->book_id = $id;
+            if ($readBook->save()) {
+                return redirect()->route('bookbase');
+            } else {
+                return "Wystąpił błąd";
+            }
+        } else {
+            // TODO: komunikat o posiadaniu książki w kolekcji
+            return redirect()->route('bookbase');
+        }
     }
 
     /**
