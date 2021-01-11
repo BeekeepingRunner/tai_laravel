@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 use App\Models\ReadBook;
 
 class ReadBookController extends Controller
@@ -14,6 +15,19 @@ class ReadBookController extends Controller
      */
     public function index()
     {
+        // If a user is not logged in
+        if (!\Auth::check()) {
+            return view('welcome');
+        }
+        // Save all id's of user's read books
+        $booksRefs = ReadBook::where('user_id', \Auth::user()->id)->get();
+        $bookIdArr = array();
+        foreach ($booksRefs as $ref) {
+            array_push($bookIdArr, $ref->book_id);
+        }
+        // return books with proper id's
+        $readBooks = Book::whereIn('id', $bookIdArr)->get();
+        return view('userReadBooks', compact('readBooks'));
     }
 
     /**
@@ -85,6 +99,21 @@ class ReadBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // If a user is not logged in
+        if (!\Auth::check()) {
+            return redirect()->route('bookbase');
+        }
+        
+        $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
+        if (!ReadBook::where($matchThese)->delete())
+        {
+            return redirect()->route('userReadBooks')->with(['success' => false,
+                'message_type' => 'danger',
+                'message' => 'Wystąpił błąd podczas usuwania książki z kolekcji. Spróbuj później']);
+        }
+        else
+        {
+            return redirect()->route('userReadBooks')->with('success', 'Pomyślnie usunięto książkę z kolekcji');
+        }
     }
 }

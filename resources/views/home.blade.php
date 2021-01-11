@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="card-body-interface flex-wrap">
-                            <a class="btn btn-success" href="{{ route('booksAddedByUser') }}">
+                            <a class="btn btn-success" href="{{ route('userReadBooks') }}">
                                 Przeczytane książki
                             </a>
                             <a class="btn btn-success" href="{{ route('userToReadBooks') }}">

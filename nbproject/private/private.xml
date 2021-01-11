@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/ReadBookController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/userBookBase.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/welcome.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2021_01_03_115730_create_books_table.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2021_01_07_094223_create_to_read_books_table.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/ToReadBook.php</file>
@@ -14,15 +15,18 @@
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/bookEditForm.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/ReadBook.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/contact.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/addbooktobase.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/HomeController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/BooksController.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/aboutus.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/database/migrations/2021_01_07_094157_create_read_books_table.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/User.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/ToReadBookController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/BookImage.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Requests/BookRequest.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/Book.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/userReadBooks.blade.php</file>
         </group>
     </open-files>
 </project-private>

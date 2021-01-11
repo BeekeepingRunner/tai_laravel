@@ -23,9 +23,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    $i = 1;
+                    ?>
                     @foreach($books as $book)
                         <tr>
-                            <td>{{ $book->id }}</td>
+                            <td>{{ $i }}</td>
                             <td><b>{{ $book->title }}</b></td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->description }}</td>
@@ -45,6 +48,9 @@
                             @endauth
                             </td>
                         </tr>
+                    <?php
+                    $i += 1;
+                    ?>
                     @endforeach
                  </tbody>
             </table>
