@@ -112,9 +112,13 @@ class ToReadBookController extends Controller
         }
         else
         {
-            return redirect()->route('userToReadBooks')->with(['success' => true,
-                'message_type' => 'success',
-                'message' => 'Pomyślnie skasowano książkę z kolekcji.']);
+            return redirect()->route('userToReadBooks')->with('success', 'Pomyślnie usunięto książkę z kolekcji');
         }
+    }
+    
+    // Remove a book from books to read and send book id to 
+    public function moveToRead($id)
+    {
+        
     }
 }

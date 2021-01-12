@@ -6,6 +6,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="table-container">
+            
+            @if(\Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{!! \Session::get('success') !!}</li>
+                </ul>
+            </div>
+            @endif
+            
             <div class="title">
                 <h3>Twoje książki do przeczytania</h3>
             </div>
