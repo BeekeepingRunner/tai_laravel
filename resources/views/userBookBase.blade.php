@@ -6,6 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="table-container">
+         
             <div class="title">
                 <h3>Książki dodane przez Ciebie</h3>
             </div>
@@ -35,6 +36,7 @@
                             <td>
                             @auth
                                 @if($book->user_id == \Auth::user()->id)
+                                
                                     <a href="{{ route('deleteBookFromBase', $book) }}"
                                        class="btn btn-danger btn-x"
                                        onclick="return confirm('Jesteś pewien?')"

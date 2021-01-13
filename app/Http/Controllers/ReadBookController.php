@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\ToReadBook;
 use App\Models\ReadBook;
 
 class ReadBookController extends Controller
@@ -41,19 +42,27 @@ class ReadBookController extends Controller
         }
         
         $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
+        
+        // if book is in to-read books, we should remove it from there
+        if (!ToReadBook::where($matchThese)->get()->isEmpty())
+        {
+            if (!ToReadBook::where($matchThese)->delete()) {
+                return redirect()->route('bookbase')->with('error', 'Wystąpił błąd, spróbuj później');
+            }
+        }
+        // if book is not in "read" collection     
         if (ReadBook::where($matchThese)->get()->isEmpty())
         {
             $readBook = new ReadBook();
             $readBook->user_id = \Auth::user()->id;
             $readBook->book_id = $id;
             if ($readBook->save()) {
-                return redirect()->route('bookbase');
+                return redirect()->route('userReadBooks')->with('success', 'Dodano książkę do kolekcji');
             } else {
                 return "Wystąpił błąd";
             }
         } else {
-            // TODO: komunikat o posiadaniu książki w kolekcji
-            return redirect()->route('bookbase');
+            return redirect()->route('bookbase')->with('error', 'Posiadasz już tę książkę w swojej kolekcji');
         }
     }
 

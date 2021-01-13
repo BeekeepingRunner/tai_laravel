@@ -44,8 +44,8 @@
                                    class="btn btn-danger btn-x"
                                    onclick="return confirm('Jesteś pewien?')"
                                    title="Skasuj"><i class="fa fa-trash-o"></i> Usuń
-                                </a>
-                                <a href="#"
+                                </a>                                
+                                <a href="{{ route('markAsRead', $book) }}"
                                    class="btn btn-success btn-xs"
                                    title="Oznacz"> Oznacz jako przeczytane
                                 </a>

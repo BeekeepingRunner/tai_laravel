@@ -46,5 +46,7 @@ Route::get('/delete-from-read/{id}', [\App\Http\Controllers\ReadBookController::
 
 Route::get('/user-to-read', [App\Http\Controllers\ToReadBookController::class, 'index'])->name('userToReadBooks');
 Route::get('/user-read-books', [\App\Http\Controllers\ReadBookController::class, 'index'])->name('userReadBooks');
+
+Route::get('/mark-as-read/{id}', [\App\Http\Controllers\ToReadBookController::class, 'markAsRead'])->name('markAsRead');
 // *
 Auth::routes();

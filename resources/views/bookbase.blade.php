@@ -6,6 +6,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="table-container">
+            
+            @if(\Session::has('error'))
+            <div class="alert alert-warning">
+                <ul>
+                    <li>{!! \Session::get('error') !!}</li>
+                </ul>
+            </div>
+            @endif
+            
             <div class="title">
                 <h3>Wszystkie książki</h3>
             </div>
