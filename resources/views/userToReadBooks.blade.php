@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('currentNavPage', 'Do przeczytania')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

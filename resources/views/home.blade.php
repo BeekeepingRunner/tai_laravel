@@ -25,20 +25,35 @@
                                 </table>
                             </div>
                         </div>
+                        
                         <div class="card-body-interface flex-wrap">
-                            <a class="btn btn-success" href="{{ route('userReadBooks') }}">
-                                Przeczytane książki
-                            </a>
-                            <a class="btn btn-success" href="{{ route('userToReadBooks') }}">
-                                Do przeczytania
-                            </a>
-                            <br /><br />
-                            <a class="btn btn-primary" href="{{ route('addBookToBase') }}">
-                                Dodaj książkę
-                            </a>
-                            <a class="btn btn-link" href="{{ route('booksAddedByUser') }}">
-                                Dodane książki
-                            </a>
+                            
+                            <div class="d-flex justify-content-center">
+                                Kolekcje
+                            </div>
+                            <hr/>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-success border" href="{{ route('userReadBooks') }}">
+                                    Przeczytane książki
+                                </a>
+                                <a class="btn btn-success border" href="{{ route('userToReadBooks') }}">
+                                    Do przeczytania
+                                </a>
+                            </div>
+                            <br />
+                            
+                            <div class="d-flex justify-content-center">
+                                Baza książek
+                            </div>
+                            <hr/>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-primary" href="{{ route('addBookToBase') }}">
+                                    Dodaj książkę
+                                </a>
+                                <a class="btn btn-link" href="{{ route('booksAddedByUser') }}">
+                                    Dodane książki
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

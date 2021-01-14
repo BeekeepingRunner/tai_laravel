@@ -2,8 +2,6 @@
 
 @extends('layouts.app')
 
-@section('currentNavPage', 'Strona Główna')
-
 @section('content')
     <section>
         <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">

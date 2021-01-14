@@ -2,8 +2,6 @@
 
 @extends('layouts.app')
 
-@section('currentNavPage', 'Kontakt')
-
 @section('content')
     <section>
         <div class="py-3 pt-md-5 pb-md-4 mx-auto text-center">

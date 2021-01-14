@@ -62,7 +62,7 @@ class ToReadBookController extends Controller
             $toReadBook->user_id = \Auth::user()->id;
             $toReadBook->book_id = $id;
             if ($toReadBook->save()) {
-                return redirect()->route('bookbase')->with('success', 'Dodano książkę do kolekcji');
+                return redirect()->route('userToReadBooks')->with('success', 'Dodano książkę do kolekcji');
             } else {
                 return "Wystąpił błąd";
             }
