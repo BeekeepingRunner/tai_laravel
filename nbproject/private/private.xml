@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/auth/login.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/BooksController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/Auth/LoginController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/Auth/ConfirmPasswordController.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/Auth/VerificationController.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/Auth/RegisterController.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/welcome.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/auth/register.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/Auth/ResetPasswordController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/public/css/customStyles.css</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/auth/login.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/BooksController.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/aboutus.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/Auth/VerificationController.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/Auth/RegisterController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/layouts/app.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Requests/BookRequest.php</file>
         </group>
