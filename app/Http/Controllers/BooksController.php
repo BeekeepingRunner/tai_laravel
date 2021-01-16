@@ -46,9 +46,7 @@ class BooksController extends Controller
         $book->user_id = \Auth::user()->id;
         $book->title = $request->title;
         $book->author = $request->author;
-        if ($request->description == null) {
-            $book->description = "Brak.";
-        } else {
+        if ($request->description != null) {
             $book->description = $request->description;
         }
         if ($book->save()) {
