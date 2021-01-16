@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Book;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class ToReadBook extends Book
+class ToReadBook extends Model
 {
-    
+    use HasFactory;
 }
