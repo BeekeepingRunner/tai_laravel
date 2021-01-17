@@ -28,7 +28,7 @@
                     @foreach($books as $book)
                         <tr>
                             <td>{{ $i . '.' }}</td>
-                            <td><image src="{{ $book->image_src }}" alt="book image"></td>
+                            <td><image class="bookImg" src="{{ $book->image_src }}" alt="book image"></td>
                             <td><b>{{ $book->title }}</b></td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->description }}</td>
