@@ -28,7 +28,7 @@ class BooksController extends Controller
     public function create()
     {
         $book = new Book();
-        return view('addBookToBase', compact('book'));
+        return view('addbooktobase', compact('book'));
     }
 
     /**

@@ -11,7 +11,9 @@
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/bookbase.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/bookEditForm.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/ReadBook.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/routes/web.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/addbooktobase.blade.php</file>
+            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/BooksController.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Providers/RouteServiceProvider.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/layouts/app.blade.php</file>
             <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Providers/AppServiceProvider.php</file>
