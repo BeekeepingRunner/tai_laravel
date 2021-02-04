@@ -68,11 +68,6 @@ class BooksController extends Controller
     
     public function showUserBooks()
     {
-        // If a user is not logged in
-        if (!\Auth::check()) {
-            return view('welcome');
-        }
-        
         $books = Book::where('user_id', \Auth::user()->id)->orderBy('title', 'asc')->get();
         
         return view('userBookBase', compact('books'));
@@ -86,12 +81,11 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        // If a user is not logged in
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-        
         $book = Book::find($id);
+        if ($book == null) {
+            return back()->with(['success' => false, 'message_type' => 'danger',
+                'message' => 'Nie ma takiej książki']);
+        }
         // Check if current user added the book to the base
         if (\Auth::user()->id != $book->user_id)
         {
@@ -134,12 +128,7 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        // If a user is not logged in
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-        
+    {  
         $book = Book::find($id);
         // Check if current user added the book to the base
         if (\Auth::user()->id != $book->user_id)

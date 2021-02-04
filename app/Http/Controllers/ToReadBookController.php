@@ -8,23 +8,12 @@ use App\Models\ReadBook;
 use App\Models\Book;
 
 class ToReadBookController extends Controller
-{
-    public function redirectIfNotLoggedIn($routeName)
-    {
-        if (!\Auth::check()) {
-            return redirect()->route($routeName);
-        }
-    }
-    
+{ 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-
         // Save all id's of user's books to read
         $booksRefs = ToReadBook::where('user_id', \Auth::user()->id)->get();
         $bookIdArr = array();
@@ -41,10 +30,6 @@ class ToReadBookController extends Controller
      */
     public function store($id)
     {
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-
         $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
         
         // If the book is in to-read collection, we should remove it from there
@@ -113,10 +98,6 @@ class ToReadBookController extends Controller
      */
     public function destroy($id)
     {
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-        
         $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
         if (!ToReadBook::where($matchThese)->delete())
         {
@@ -133,10 +114,6 @@ class ToReadBookController extends Controller
     // Remove a book from books to read and send book id to ReadBookController
     public function markAsRead($id)
     {
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-        
         $userId = \Auth::user()->id;
         $matchThese = ['user_id' => $userId, 'book_id' => $id];
         if (!ToReadBook::where($matchThese)->delete())

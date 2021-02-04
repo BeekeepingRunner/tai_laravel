@@ -16,10 +16,6 @@ class ReadBookController extends Controller
      */
     public function index()
     {
-        // If a user is not logged in
-        if (!\Auth::check()) {
-            return view('welcome');
-        }
         // Save all id's of user's read books
         $booksRefs = ReadBook::where('user_id', \Auth::user()->id)->get();
         $bookIdArr = array();
@@ -36,11 +32,6 @@ class ReadBookController extends Controller
      */
     public function store($id)
     {
-        // If a user is not logged in
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-        
         $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
         
         // if book is in to-read books, we should remove it from there
@@ -108,11 +99,6 @@ class ReadBookController extends Controller
      */
     public function destroy($id)
     {
-        // If a user is not logged in
-        if (!\Auth::check()) {
-            return redirect()->route('bookbase');
-        }
-        
         $matchThese = ['user_id' => \Auth::user()->id, 'book_id' => $id];
         if (!ReadBook::where($matchThese)->delete())
         {

@@ -2,23 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/userBookBase.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/ToReadBook.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/userToReadBooks.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/home.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/public/css/customStyles.css</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/bookbase.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/bookEditForm.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/ReadBook.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/addbooktobase.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Http/Controllers/BooksController.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Providers/RouteServiceProvider.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/layouts/app.blade.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Providers/AppServiceProvider.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/app/Models/Book.php</file>
-            <file>file:/C:/xampp/htdocs/koncowyLaravel/resources/views/userReadBooks.blade.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
