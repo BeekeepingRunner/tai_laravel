@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateBookImagesTable extends Migration
 {
@@ -22,19 +23,12 @@ class CreateBookImagesTable extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
         });
-        /*
-        Schema::create('book_images', function (Blueprint $table) {
-            $table->('id');
-            $table->string('title');
-            $table->string('src');
-            $table->string('mime_type')->nullable();
-            $table->string('title')->nullable();
-            $table->string('alt')->nullable();
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
-         * 
-         */
+        
+        DB::table('book_images')->insert(
+                array(
+                    'src' => 'images/samples/bookIcon.jpg'
+                )
+            );
     }
 
     /**

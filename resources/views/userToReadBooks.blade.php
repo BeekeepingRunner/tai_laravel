@@ -1,3 +1,7 @@
+<?php
+use App\Http\Controllers\BookImageController;
+?>
+
 @extends('layouts.app')
 
 @section('content')
@@ -34,7 +38,9 @@
                     @foreach($booksToRead as $book)
                         <tr>
                             <td>{{ $i . '.' }}</td>
-                            <td><image class="bookImg" src="{{ $book->image_src }}" alt="book image"></td>
+                            <td><image class="bookImg"
+                                       src="{{ BookImageController::show($book->image_id) }}"
+                                       alt="book image"></td>
                             <td><b>{{ $book->title }}</b></td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->description }}</td>
