@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('scripts')
-
+<script src="js/imageUploading.js"></script>
 @endsection
 
 @section('content')
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <form role="form" method="POST" action="{{ route('storeBookInBase') }}" id="book-form" enctype="multipart/form-data">
                         @csrf
-
+                        
                         <div class="form-group row{{ $errors->has('message')?'has-error':'' }}" id="roles-box">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Tytuł') }}</label>
                             <div class="col-md-6">
@@ -46,6 +46,17 @@
                             </div>
                         </div>
                         
+                        <!-- IMAGE UPLOAD -->
+                        <div class="form-group row{{ $errors->has('message')?'has-error':'' }}" id="roles-box">
+                            <label for="image-upload" class="col-md-4 col-form-label text-md-right">{{ __('Zdjęcie') }}</label>
+                            <div class="col-md-6">
+                                <input type="file" id="img-file" accept="image/*"/>
+                                <br>
+                                <img id="img-preview" src="#" alt="uploaded image"  hidden/>
+                            </div>
+                        </div>
+                        
+                        <!-- How to grab an image and save it in DB after submit? -->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
