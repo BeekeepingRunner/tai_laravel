@@ -38,9 +38,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/aboutus') }}">O nas</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/contact') }}">Kontakt</a>
-                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
