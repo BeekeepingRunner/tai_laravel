@@ -1,7 +1,3 @@
-<?php
-use App\Http\Controllers\BookImageController;
-?>
-
 @extends('layouts.app')
 
 @section('content')
@@ -33,7 +29,7 @@ use App\Http\Controllers\BookImageController;
                         <tr>
                             <td>{{ $i . '.' }}</td>
                             <td><image class="bookImg"
-                                       src="{{ BookImageController::show($book->image_id) }}"
+                                       src="{{ asset('storage/images/'.$book->img_src) }}"
                                        alt="book image"></td>
                             <td><b>{{ $book->title }}</b></td>
                             <td>{{ $book->author }}</td>

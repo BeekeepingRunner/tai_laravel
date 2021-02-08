@@ -50,7 +50,7 @@
                         <div class="form-group row{{ $errors->has('message')?'has-error':'' }}" id="roles-box">
                             <label for="image-upload" class="col-md-4 col-form-label text-md-right">{{ __('Zdjęcie') }}</label>
                             <div class="col-md-6">
-                                <input type="file" id="img-file" accept="image/*"/>
+                                <input type="file" name="file" id="imgFile" accept="image/*" enctype="multipart/form-data" />
                                 <br>
                                 <img id="img-preview" src="#" alt="uploaded image"  hidden/>
                             </div>

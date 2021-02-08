@@ -25,10 +25,12 @@ class CreateBookImagesTable extends Migration
         });
         
         DB::table('book_images')->insert(
-                array(
-                    'src' => 'images/samples/bookIcon.jpg'
-                )
-            );
+            array(
+                'src' => 'public/images/bookIcon.jpg'
+            )
+        );
+        
+        
     }
 
     /**

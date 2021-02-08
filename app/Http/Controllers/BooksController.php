@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
+use App\Models\BookImage;
 use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
@@ -39,9 +40,6 @@ class BooksController extends Controller
      */
     public function store(BookRequest $request)
     {
-        if (\Auth::user() == null) {
-            return view('bookbase');
-        }
         $book = new Book();
         $book->user_id = \Auth::user()->id;
         $book->title = $request->title;
@@ -49,10 +47,25 @@ class BooksController extends Controller
         if ($request->description != null) {
             $book->description = $request->description;
         }
+        
+        if ($request->file()) {
+            $imgPath = $request->file('file')->store('public/images');
+            $book->img_src = substr($imgPath, 14);
+            
+            $image = new BookImage();
+            $image->src = $imgPath;
+            if (!($image->save())) {
+                return back()->with(['success' => false, 'message_type' => 'danger',
+                    'message' => 'Wystąpił błąd przy dodawaniu zdjęcia.']);
+            }
+        }
+        
         if ($book->save()) {
             return redirect()->route('booksAddedByUser');
         }
-        return "Wystąpił błąd";
+        
+        return back()->with(['success' => false, 'message_type' => 'danger',
+                    'message' => 'Wystąpił błąd przy dodawaniu książki']);
     }
 
     /**
