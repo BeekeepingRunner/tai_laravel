@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('img_id')->default(1)->references('id')->on('book_images');
             $table->string('img_src')->default('bookIcon.jpg');
             $table->string('title');
             $table->string('author');

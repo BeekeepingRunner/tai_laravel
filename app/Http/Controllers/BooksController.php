@@ -31,7 +31,7 @@ class BooksController extends Controller
         $book = new Book();
         return view('addbooktobase', compact('book'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -44,17 +44,14 @@ class BooksController extends Controller
         $book->user_id = \Auth::user()->id;
         $book->title = $request->title;
         $book->author = $request->author;
-        if ($request->description != null) {
+        if ($request->description != null){
             $book->description = $request->description;
         }
         
-        if ($request->file()) {
-            $imgPath = $request->file('file')->store('public/images');
-            $book->img_src = substr($imgPath, 14);
-            
-            $image = new BookImage();
-            $image->src = $imgPath;
-            if (!($image->save())) {
+        if ($request->file())   // if file has been uploaded by user
+        {
+            if (!$this->saveFile($request, $book))
+            {
                 return back()->with(['success' => false, 'message_type' => 'danger',
                     'message' => 'Wystąpił błąd przy dodawaniu zdjęcia.']);
             }
@@ -63,11 +60,27 @@ class BooksController extends Controller
         if ($book->save()) {
             return redirect()->route('booksAddedByUser');
         }
-        
-        return back()->with(['success' => false, 'message_type' => 'danger',
+        else {
+            return back()->with(['success' => false, 'message_type' => 'danger',
                     'message' => 'Wystąpił błąd przy dodawaniu książki']);
+        }
     }
+    
+    private function saveFile(BookRequest $request, Book $book)
+    {
+        $imgPath = $request->file('file')->store('public/images');
+        $book->img_src = substr($imgPath, strlen('public/images/'));
 
+        $image = new BookImage();
+        $image->src = $imgPath;
+        if (!($image->save())) {
+            return false;
+        } else {
+            $book->img_id = $image->id;
+            return true;
+        }
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -149,14 +162,19 @@ class BooksController extends Controller
             return back()->with(['success' => false, 'message_type' => 'danger',
                 'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
         }
-        if ($book->delete())
+        
+        // $bookImageID = $book->img_id;
+        
+        if (!$book->delete())
         {
-            return redirect()->route('booksAddedByUser')->with(['success' => true,
+            return back()->with(['success' => false, 'message_type' => 'danger',
+                'message' => 'Wystąpił błąd podczas kasowania książki z bazy. Spróbuj później.']);
+        }
+
+        // wywołanie funkcji kasującej zdjęcie
+        
+        return redirect()->route('booksAddedByUser')->with(['success' => true,
                 'message_type' => 'success',
                 'message' => 'Pomyślnie skasowano książkę z bazy.']);
-        }
-        
-        return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Wystąpił błąd podczas kasowania książki z bazy. Spróbuj później.']);
     }
 }
