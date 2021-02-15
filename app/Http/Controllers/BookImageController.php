@@ -33,9 +33,17 @@ class BookImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
-        //
+        $imgPath = $request->file('file')->store('public/images');
+        $image = new BookImage();
+        $image->src = $imgPath;
+        
+        if (!($image->save())) {
+            return false;
+        } else {
+            return $image->id;
+        }
     }
 
     /**

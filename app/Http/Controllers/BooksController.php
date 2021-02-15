@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
+
 use App\Models\BookImage;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\BookImageController;
+
+// use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
@@ -47,13 +50,13 @@ class BooksController extends Controller
         if ($request->description != null){
             $book->description = $request->description;
         }
-        
+
         if ($request->file())   // if file has been uploaded by user
         {
-            if (!$this->saveFile($request, $book))
+            if (!$this->saveImage($request, $book))
             {
                 return back()->with(['success' => false, 'message_type' => 'danger',
-                    'message' => 'Wystąpił błąd przy dodawaniu zdjęcia.']);
+                    'message' => 'Wystąpił błąd przy dodawaniu zdjęcia']);
             }
         }
         
@@ -66,20 +69,41 @@ class BooksController extends Controller
         }
     }
     
+    private function saveImage(BookRequest $request, Book $book)
+    {
+        $imgID = BookImageController::store($request);
+        if ($imgID) {
+            $book->img_id = $imgID;
+            $image = BookImage::find($imgID);
+            if ($image == null) {
+                return false;
+            }
+
+            $book->img_src = substr($image->src, strlen('public/images/'));
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    /*
     private function saveFile(BookRequest $request, Book $book)
     {
         $imgPath = $request->file('file')->store('public/images');
-        $book->img_src = substr($imgPath, strlen('public/images/'));
-
         $image = new BookImage();
         $image->src = $imgPath;
+        
         if (!($image->save())) {
             return false;
         } else {
             $book->img_id = $image->id;
+            $book->img_src = substr($imgPath, strlen('public/images/'));
             return true;
         }
     }
+     * 
+     */
     
     /**
      * Display the specified resource.
