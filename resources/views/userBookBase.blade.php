@@ -5,6 +5,14 @@
     <div class="row justify-content-center">
         <div class="table-container">
          
+            @if(\Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{!! \Session::get('success') !!}</li>
+                </ul>
+            </div>
+            @endif
+            
             <div class="title">
                 <h3>Książki dodane przez Ciebie</h3>
             </div>

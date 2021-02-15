@@ -187,15 +187,20 @@ class BooksController extends Controller
                 'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
         }
         
-        // $bookImageID = $book->img_id;
-        
+        $imageID = $book->img_id;
         if (!$book->delete())
         {
             return back()->with(['success' => false, 'message_type' => 'danger',
                 'message' => 'Wystąpił błąd podczas kasowania książki z bazy. Spróbuj później.']);
         }
 
-        // wywołanie funkcji kasującej zdjęcie
+        if ($imageID != null && $imageID != 1)
+        {
+            if (!BookImageController::destroy($imageID)) {
+                return back()->with(['success' => false, 'message_type' => 'danger',
+                'message' => 'Wystąpił błąd podczas usuwania zdjęcia książki.']); // future exception
+            }
+        }
         
         return redirect()->route('booksAddedByUser')->with(['success' => true,
                 'message_type' => 'success',

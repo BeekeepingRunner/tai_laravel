@@ -87,8 +87,13 @@ class BookImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public static function destroy($id)
     {
-        //
+        $BookImage = BookImage::find($id);
+        if ($BookImage->delete()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
