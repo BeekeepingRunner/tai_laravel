@@ -55,17 +55,15 @@ class BooksController extends Controller
         {
             if (!$this->saveImage($request, $book))
             {
-                return back()->with(['success' => false, 'message_type' => 'danger',
-                    'message' => 'Wystąpił błąd przy dodawaniu zdjęcia']);
+                return back()->with('error', 'Wystąpił błąd przy dodawaniu zdjęcia');
             }
         }
         
         if ($book->save()) {
-            return redirect()->route('booksAddedByUser');
+            return redirect()->route('booksAddedByUser')->with('success', 'dodano książkę do bazy');
         }
         else {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                    'message' => 'Wystąpił błąd przy dodawaniu książki']);
+            return back()->with('error', 'Wystąpił błąd przy dodawaniu książki');
         }
     }
     
@@ -133,14 +131,12 @@ class BooksController extends Controller
     {
         $book = Book::find($id);
         if ($book == null) {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie ma takiej książki']);
+            return back()->with('error', 'Nie ma takiej książki');
         }
         // Check if current user added the book to the base
         if (\Auth::user()->id != $book->user_id)
         {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+            return back()->with('error', 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.');
         }
         return view('bookEditForm', compact('book'));
     }
@@ -166,7 +162,7 @@ class BooksController extends Controller
         $book->author = $request->author;
         $book->description = $request->description;
         if($book->save()) {
-            return redirect()->route('bookbase');   // 'book added by user route' later
+            return redirect()->route('booksAddedByUser')->with('success', 'Pomyślnie zapisano zmiany');   // 'book added by user route' later
         }
         return "Wystąpił błąd.";
     }
@@ -183,27 +179,22 @@ class BooksController extends Controller
         // Check if current user added the book to the base
         if (\Auth::user()->id != $book->user_id)
         {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+            return back()->with('success', 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.');
         }
         
         $imageID = $book->img_id;
         if (!$book->delete())
         {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Wystąpił błąd podczas kasowania książki z bazy. Spróbuj później.']);
+            return back()->with('error', 'Wystąpił błąd podczas kasowania książki z bazy. Spróbuj później.');
         }
 
         if ($imageID != null && $imageID != 1)
         {
             if (!BookImageController::destroy($imageID)) {
-                return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Wystąpił błąd podczas usuwania zdjęcia książki.']); // future exception
+                return back()->with('error', 'Wystąpił błąd podczas usuwania zdjęcia książki.'); // future exception
             }
         }
         
-        return redirect()->route('booksAddedByUser')->with(['success' => true,
-                'message_type' => 'success',
-                'message' => 'Pomyślnie skasowano książkę z bazy.']);
+        return redirect()->route('booksAddedByUser')->with('success', 'Pomyślnie skasowano książkę z bazy.');
     }
 }

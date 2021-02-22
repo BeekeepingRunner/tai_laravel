@@ -9,9 +9,6 @@ $().ready(function() {
             isValid = true;
             var url = window.URL || window.webkitURL;
             var image = new Image();
-            image.onload = function() {
-                alert('Valid Image');
-            };
             image.onerror = function() {
                 alert('Invalid image');
                 isValid = false;
@@ -29,9 +26,8 @@ $().ready(function() {
 
 function readURL(fileInput) {
     
-    if (fileInput.length && fileInput[0].files && fileInput[0].files.length) {
-        
-        alert('if worked');
+    if (fileInput.length && fileInput[0].files && fileInput[0].files.length)
+    {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#img-preview')

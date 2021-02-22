@@ -12,6 +12,13 @@
                 </ul>
             </div>
             @endif
+            @if(\Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{!! \Session::get('success') !!}</li>
+                </ul>
+            </div>
+            @endif
             
             <div class="title">
                 <h3>Wszystkie książki</h3>
