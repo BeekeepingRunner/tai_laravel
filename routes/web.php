@@ -39,11 +39,11 @@ Route::post('/add-book-to-base', [\App\Http\Controllers\BooksController::class, 
 Route::get('/delete-book-from-base/{id}', [\App\Http\Controllers\BooksController::class, 'destroy'])
         ->name('deleteBookFromBase')->middleware('auth');
 
-Route::get('/edit-book/{id}', [\App\Http\Controllers\BooksController::class, 'edit'])->name('editBook')
-        ->middleware('auth');
+Route::get('/edit-book/{id}', [\App\Http\Controllers\BooksController::class, 'edit'])
+        ->name('editBook')->middleware('auth');
 
-Route::put('{id}', [\App\Http\Controllers\BooksController::class, 'update'])->name('updateBook')
-        ->middleware('auth');
+Route::put('{id}', [\App\Http\Controllers\BooksController::class, 'update'])
+        ->name('updateBook')->middleware('auth');
 // *
 // User collections
 // *

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scripts')
+<script src="{{ asset('/js/imageUploading.js') }}"></script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -39,7 +43,18 @@
                         <div class="form-group row{{ $errors->has('message')?'has-error':'' }}" id="roles-box">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Opis') }}</label>
                             <div class="col-md-6">
-                                <input id="description" type="text" name="description" value="{{ $book->description }}" required>
+                                <textarea id="description" name="description" rows="6", cols="24" required>{{ $book->description }}</textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- IMAGE UPLOAD -->
+                        <div class="form-group row{{ $errors->has('message')?'has-error':'' }}" id="roles-box">
+                            <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Zdjęcie') }}</label>
+                            <div class="col-md-6">
+                                <input type="file" name="file" id="imgFile" accept="image/*" enctype="multipart/form-data" />
+                                <br><br>
+                                <img id="old-img-preview" src="{{ asset('storage/images/'.$book->img_src) }}" alt="old image" />
+                                <img id="img-preview" src="#" alt="uploaded image" hidden />
                             </div>
                         </div>
 
