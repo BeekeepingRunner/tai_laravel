@@ -1,1 +1,1 @@
-## Laravel based web application for management of books collections.
+## Laravel based web application for management of book collections.
