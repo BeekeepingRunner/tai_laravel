@@ -53,7 +53,7 @@ class BooksController extends Controller
 
         if ($request->file())   // if file has been uploaded by user
         {
-            if (!$this->saveImage($request, $book))
+            if (!$this->saveBookImage($request, $book))
             {
                 return back()->with('error', 'Wystąpił błąd przy dodawaniu zdjęcia');
             }
@@ -67,7 +67,7 @@ class BooksController extends Controller
         }
     }
     
-    private function saveImage(BookRequest $request, Book $book)
+    private function saveBookImage(BookRequest $request, Book $book)
     {
         $imgID = BookImageController::store($request);
         if ($imgID) {
@@ -84,24 +84,6 @@ class BooksController extends Controller
             return false;
         }
     }
-    
-    /*
-    private function saveFile(BookRequest $request, Book $book)
-    {
-        $imgPath = $request->file('file')->store('public/images');
-        $image = new BookImage();
-        $image->src = $imgPath;
-        
-        if (!($image->save())) {
-            return false;
-        } else {
-            $book->img_id = $image->id;
-            $book->img_src = substr($imgPath, strlen('public/images/'));
-            return true;
-        }
-    }
-     * 
-     */
     
     /**
      * Display the specified resource.
@@ -148,19 +130,39 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BookRequest $request, $id)
     {
         $book = Book::find($id);
-        //Sprawdzenie czy użytkownik jest autorem komentarza
+        // Check if user is an owner of this book
         if(\Auth::user()->id != $book->user_id)
         {
-            return back()->with(['success' => false, 'message_type' => 'danger',
-                'message' => 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.']);
+            return back()->with('success', 'Nie posiadasz uprawnień do przeprowadzenia tej operacji.');
         }
         // New values
         $book->title = $request->title;
         $book->author = $request->author;
         $book->description = $request->description;
+        
+        // if a new image has been uploaded by the user
+        if ($request->file())   
+        {
+            $oldImageID = $book->img_id;
+            
+            // save new image in DB and bind it to the book
+            if (!$this->saveBookImage($request, $book))
+            {
+                return back()->with('error', 'Wystąpił błąd przy dodawaniu zdjęcia');
+            }
+            
+            // delete old image from DB
+            if ($oldImageID != null && $oldImageID != 1)
+            {
+                if (!BookImageController::destroy($imageID)) {
+                    return back()->with('error', 'Wystąpił błąd podczas usuwania zdjęcia książki.'); // future exception
+                }
+            }
+        }
+        
         if($book->save()) {
             return redirect()->route('booksAddedByUser')->with('success', 'Pomyślnie zapisano zmiany');   // 'book added by user route' later
         }
