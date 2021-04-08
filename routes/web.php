@@ -13,15 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-    return view('welcome');
-});
-Route::get('/aboutus', function() {
-    return view('aboutus');
-});
-Route::get('/contact', function() {
-    return view('contact');
-});
+Route::view('/', 'welcome');
+Route::view('/aboutus', 'aboutus');
 
 Route::get('/bookbase', [\App\Http\Controllers\BooksController::class, 'index'])->name('bookbase');
 
